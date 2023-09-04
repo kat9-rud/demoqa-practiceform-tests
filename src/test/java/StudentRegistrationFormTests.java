@@ -1,10 +1,6 @@
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementClickInterceptedException;
-import org.openqa.selenium.InvalidElementStateException;
 
 import java.io.File;
 
@@ -29,7 +25,6 @@ public class StudentRegistrationFormTests {
         var lastName = "Smith";
         var email = "anne.smith@example.com";
         var mobile = "7823526297";
-        var dateOfBirth = "01 Aug 1980";
         var subjects = "Physics";
         var currentAddress = "7539 W Dallas St";
 
