@@ -2,10 +2,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -58,7 +55,8 @@ public class StudentRegistrationFormTests {
 
         $("#hobbiesWrapper").$(byText(hobby)).click();
 
-        File file = $("#uploadPicture").uploadFile(new File("src/test/java/../resources/" + pic));
+//        File file = $("#uploadPicture").uploadFile(new File("src/test/java/../resources/" + pic));
+        $("#uploadPicture").uploadFromClasspath(pic);
 
         $("#currentAddress").setValue(currentAddress);
 
@@ -69,17 +67,10 @@ public class StudentRegistrationFormTests {
         $("#stateCity-wrapper").$(byText(city)).click();
 
         $("#submit").click();
+        $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldBe(visible).shouldHave(text("Thanks for submitting the form"));
-
-        $(".table tbody tr:nth-child(1) td:nth-child(2)").shouldHave(text(firstName + " " + lastName));
-        $(".table tbody tr:nth-child(2) td:nth-child(2)").shouldHave(text(email));
-        $(".table tbody tr:nth-child(3) td:nth-child(2)").shouldHave(text(gender));
-        $(".table tbody tr:nth-child(4) td:nth-child(2)").shouldHave(text(mobile));
-        $(".table tbody tr:nth-child(5) td:nth-child(2)").shouldHave(text(dayOfBirth + " " + monthOfBirth + "," + yearOfBirth));
-        $(".table tbody tr:nth-child(6) td:nth-child(2)").shouldHave(text(subject));
-        $(".table tbody tr:nth-child(7) td:nth-child(2)").shouldHave(text(hobby));
-        $(".table tbody tr:nth-child(8) td:nth-child(2)").shouldHave(text(pic));
-        $(".table tbody tr:nth-child(9) td:nth-child(2)").shouldHave(text(currentAddress));
-        $(".table tbody tr:nth-child(10) td:nth-child(2)").shouldHave(text(state + " " + city));
+        $(".table-responsive").shouldHave(text(firstName + " " + lastName), text(email),
+                text(gender), text(mobile), text(dayOfBirth + " " + monthOfBirth + "," + yearOfBirth),
+                text(subject), text(hobby), text(pic), text(currentAddress), text(state + " " + city));
     }
 }
