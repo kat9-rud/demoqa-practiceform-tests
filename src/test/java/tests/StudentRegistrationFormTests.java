@@ -1,3 +1,5 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -69,8 +71,6 @@ public class StudentRegistrationFormTests {
         $("#submit").click();
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldBe(visible).shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text(firstName + " " + lastName), text(email),
-                text(gender), text(mobile), text(dayOfBirth + " " + monthOfBirth + "," + yearOfBirth),
-                text(subject), text(hobby), text(pic), text(currentAddress), text(state + " " + city));
+        $(".table-responsive").shouldHave(text(firstName + " " + lastName), text(email), text(gender), text(mobile), text(dayOfBirth + " " + monthOfBirth + "," + yearOfBirth), text(subject), text(hobby), text(pic), text(currentAddress), text(state + " " + city));
     }
 }
