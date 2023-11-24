@@ -18,7 +18,7 @@ public class RegistrationPage {
             mobile = $("#userNumber"),
             dateOfBirth = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
-            subjectsDropdown = $("#react-select-2-option-0"),
+            subjectsDropdown = $(".subjects-auto-complete__menu-list"),
             hobbies = $("#hobbiesWrapper"),
             picture = $("#uploadPicture"),
             currentAddress = $("#currentAddress"),
@@ -73,7 +73,7 @@ public class RegistrationPage {
 
     public RegistrationPage setSubjects(String value) {
         subjectsInput.setValue("" + value.charAt(0));
-        subjectsDropdown.shouldBe(text(value)).click();
+        subjectsDropdown.$(byText(value)).click();
 
         return this;
     }

@@ -9,7 +9,7 @@ import java.util.Locale;
 public class TestData {
     Faker faker = new Faker();
     private final String[] hobbies = new String[]{"Sports", "Reading", "Music"};
-    private final String[] subjects = new String[]{"Math", "Chemistry", "Physics", "Computer Science",
+    private final String[] subjects = new String[]{"Maths", "Chemistry", "Physics", "Computer Science",
             "English", "History"};
     private final String[] states = new String[]{"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
 
