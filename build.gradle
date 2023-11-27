@@ -38,9 +38,14 @@ compileTestJava {
     options.encoding = 'UTF-8'
 }
 
-test {
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform()
 }
+
+//test {
+//    useJUnitPlatform()
+//}
 
 task remote_test(type: Test) {
     useJUnitPlatform {

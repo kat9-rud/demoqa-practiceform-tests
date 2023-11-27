@@ -16,12 +16,16 @@ public class TestBase {
     RegistrationPage page = new RegistrationPage();
     @BeforeAll
     static void beforeAll() {
-        Configuration.browserSize = "1920x1080";
-//        Configuration.holdBrowserOpen = true;
+        Configuration.browser = System.getProperty("browser", "");
+        Configuration.browserSize = System.getProperty("resolution", "");
         Configuration.baseUrl = "https://demoqa.com";
 
-        Configuration.browserVersion = "100.0";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.browserVersion = System.getProperty("browser_version", "");
+        String login = System.getProperty("remote_login", "");
+        String pass = System.getProperty("remote_pass", "");
+        String remote = System.getProperty("remote", "");
+
+        Configuration.remote =  remote.replace("//", "//" + login + ":" + pass + "@") + "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
